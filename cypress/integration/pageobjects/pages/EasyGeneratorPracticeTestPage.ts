@@ -6,6 +6,7 @@
 
 export class EasyGeneratorPracticeTestPage {
 
+    
     /**
      * User can open local html file by executing this method.
      * @returns easygeneratorpracticetestpage
@@ -26,6 +27,15 @@ export class EasyGeneratorPracticeTestPage {
     }
 
     /**
+     * user is able to verify the selected dropdown value
+     * @returns easygeneratorpracticetestpage
+     */
+    VerifyDropDownSelectedOption() {
+        cy.get('#dropdown-class-example').contains('Option2')
+        return this;
+    }
+
+    /**
      * user can upload files/images from the method
      * @returns easygeneratorpracticetestpage
      */
@@ -34,12 +44,22 @@ export class EasyGeneratorPracticeTestPage {
         return this;
     }
 
+
+    /**
+     * user is able to verify the uploaded image from thois method
+     * @returns easygeneratorpracticetestpage
+     */
+    VerifyImageAvailability() {
+        cy.get('img').should('be.visible');
+        return this;
+    }
+
     /**
      * user is able to open new tab in the same tab
      * @returns easygeneratorpracticetestpage
      */
     StepOpenNewTab() {
-        cy.get('#opentab').invoke('removeAttr', 'target').click();
+        cy.get('#opentab').invoke('removeAttr','target').click();
         return this;
     }
 
@@ -57,7 +77,7 @@ export class EasyGeneratorPracticeTestPage {
      * @returns easygeneratorpracticetestpage
      */
     StepClickConfirmButton() {
-        cy.get('#confirmbnt').click();
+        cy.get('#confirmbtn').click();
         return this;
     }
 
@@ -90,15 +110,28 @@ export class EasyGeneratorPracticeTestPage {
      * user is able to read file content by using this method
      * @returns easygeneratorpracticetestpage
      */
-    StepReadTextFile() {
-        cy.readFile('././cypress/support/utils/docs/alert-text.txt').should('eq', 'Hello from Easygenerator' );
+    VerifyTextFileConent() {
+        cy.readFile('././cypress/support/utils/docs/alert-text.txt').should('eq','Hello from Easygenerator\n');
         return this;
 
     }
 
     //TODO - enter above text to alert popup enter text area
     StepEnterTextAlertTextField() {
-        //TODO
+
+         cy.readFile('././cypress/support/utils/docs/alert-text.txt').then((textContent) =>cy.get('#name').type(textContent));
+         return this;
+        
+    }
+
+    /**
+     * user is able to enter name 
+     * @param name data will recievd from the fixture file
+     * @returns 
+     */
+    StepTypeNameAlertTextBox(name: string) {
+        cy.get('#name').type(name);
+        return this;
     }
 
     /**
@@ -156,8 +189,9 @@ export class EasyGeneratorPracticeTestPage {
      * user is able to get the visibility of the options
      * @returns easygeneratorpracticetestpage
      */
-    VerifyMouseHoverOption() {
-        cy.get('.hover-container').invoke('show');
+    StepVisibilityMouseHoverOption() {
+        cy.get('.hover-container').trigger('mouseover');
+        //Cypress.$('.hover-container').show();
         return this;
     }
 
@@ -178,6 +212,11 @@ export class EasyGeneratorPracticeTestPage {
      */
     StepClickReloadOption() {
         cy.contains('Reload').click();
+        return this;
+    }
+
+    StepPageScrollDown() {
+        cy.scrollTo('center');
         return this;
     }
     
