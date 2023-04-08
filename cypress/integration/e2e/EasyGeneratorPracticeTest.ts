@@ -1,6 +1,10 @@
 import { EasyGeneratorPracticeTestPage } from "../pageobjects/pages/EasyGeneratorPracticeTestPage";
-import { testdata } from "../../fixtures/testdata.json";
 
+/**
+ * @author Lathika Herath
+ * @description Initial test cases related to the easygenerator practice test page
+ * @date 2023-04-8
+ */
 
 const easygeneratorpracticetestpage = new EasyGeneratorPracticeTestPage();
 
@@ -14,11 +18,6 @@ describe('Eaasy Generator Practice Test Page Coomponent Test Cases', () => {
             .StepOpenLocalHtmlFile();
     })   
 
-    before('Reading data from fixture file', () =>{
-        // cy.fixture('testdata').then(() => {
-        //     const mydata = testdata
-        // })
-    })
 
     xit('Verify the selected option from the dropdown', () => {
 
@@ -53,7 +52,7 @@ describe('Eaasy Generator Practice Test Page Coomponent Test Cases', () => {
         easygeneratorpracticetestpage
         .StepEnterTextAlertTextField()
         .StepClickAlertButton()
-        .VerifyAlertPopupText(testdata.alertPopupContent);
+        .VerifyAlertPopupText('Hello Hello from Easygenerator, share this practice page and share your knowledge');
         
     })
 
