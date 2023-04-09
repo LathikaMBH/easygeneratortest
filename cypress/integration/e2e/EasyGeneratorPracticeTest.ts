@@ -51,10 +51,12 @@ describe('Eaasy Generator Practice Test Page Coomponent Test Cases', () => {
     it('Verify the alter popup content', () => {   
            
         
+        cy.fixture('testdata').then((data) => {
             easygeneratorpracticetestpage
             .StepEnterTextAlertTextField()
             .StepClickAlertButton()
-            .VerifyAlertPopupText('Hello Hello from Easygenerator, share this practice page and share your knowledge');  
+            .VerifyAlertPopupText(data?.alerttextcontent);  
+        })
         
                 
     })
@@ -63,10 +65,12 @@ describe('Eaasy Generator Practice Test Page Coomponent Test Cases', () => {
     it('Verify the confirm popup content', () => {
 
         
-        easygeneratorpracticetestpage
-        .StepEnterTextAlertTextField()
-        .StepClickConfirmButton()
-        .VerifyConfirmPopupText('Hello Hello from Easygenerator, Are you sure you want to confirm?');
+        cy.fixture('testdata').then((data) => {
+            easygeneratorpracticetestpage
+            .StepEnterTextAlertTextField()
+            .StepClickConfirmButton()
+            .VerifyConfirmPopupText(data?.confirmtextcontent);
+            })
         
         
     })
