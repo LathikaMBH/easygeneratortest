@@ -4,6 +4,8 @@
  * @date 2023-04-6
  */
 
+import cypress from "cypress";
+
 export class EasyGeneratorPracticeTestPage {
 
     
@@ -12,7 +14,8 @@ export class EasyGeneratorPracticeTestPage {
      * @returns easygeneratorpracticetestpage
      */
     StepOpenLocalHtmlFile() {
-        cy.visit('././cypress/support/utils/htmlfiles/task.html');
+        //alert(Cypress.env("URL"))
+        cy.visit(Cypress.env("URL"));
         return this;
     }
 

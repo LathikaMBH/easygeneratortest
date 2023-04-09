@@ -105,6 +105,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,
-    "types": ["cypress"]                                 /* Skip type checking all .d.ts files. */
+    "types": ["cypress"],
+    
   }
 }
